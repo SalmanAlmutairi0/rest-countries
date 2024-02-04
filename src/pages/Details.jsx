@@ -27,7 +27,7 @@ export default function Details() {
     getCountry();
   }, [countryCcn3]);
   return (
-    <div className="container flex flex-col gap-10 lg:mx-auto mt-10 h-screen  ">
+    <div className="container flex flex-col gap-10 lg:mx-auto my-10  ">
       {loading && <LoadingScreen />}
       <Link to="/">
         <button className="flex ml-3 items-center gap-3 bg-white py-1 px-6 shadow-md w-fit">
