@@ -7,6 +7,7 @@ import LoadingScreen from "../components/Ui/LoadingScreen";
 export default function Details() {
   const [country, setCountry] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [currencies, setCurrencies] = useState();
   const countryCcn3 = window.location.pathname.split("/").pop();
   useEffect(() => {
     console.log("useEffect called");
@@ -16,11 +17,19 @@ export default function Details() {
         const res = await fetch(
           `https://restcountries.com/v3.1/alpha/${countryCcn3}`
         );
+
         const data = await res.json();
+        
+        setCurrencies(
+          data[0].currencies[Object.keys(data[0].currencies)[0]].name
+        );
         setCountry(data[0]);
+
+        
       } catch (error) {
         console.error("Error fetching country data:", error);
       }
+      
       setLoading(false);
     };
 
@@ -90,22 +99,20 @@ export default function Details() {
               </p>
               <p className="font-semibold">
                 Curencies:{" "}
-                <span className="font-normal text-gray-700">
-                  {country?.currencies?.CAD?.name}
-                </span>
+                <span className="font-normal text-gray-700">{currencies}</span>
               </p>
               <p className="font-semibold">
                 Languages:{" "}
-                <span className="font-normal text-gray-700">Dutch ,</span>
-                {country?.languages?.dut
-                  ? Object.entries(country.languages.dut).map(
-                      ([code, name]) => (
-                        <span key={code} className="font-normal text-gray-700">
-                          {name} ({code})
-                        </span>
-                      )
-                    )
-                  : null}
+                {/* <span className="font-normal text-gray-700">Dutch ,</span> */}
+                {country?.languages?.dut ? (
+                  Object.entries(country.languages.dut).map(([code, name]) => (
+                    <span key={code} className="font-normal text-gray-700">
+                      {name} ({code})
+                    </span>
+                  ))
+                ) : (
+                  <span>N/A</span>
+                )}
               </p>
             </div>
           </div>
