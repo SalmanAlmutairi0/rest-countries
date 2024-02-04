@@ -25,7 +25,7 @@ export default function Details() {
     };
 
     getCountry();
-  }, []);
+  }, [countryCcn3]);
   return (
     <div className="container flex flex-col gap-10 lg:mx-auto mt-10 h-screen  ">
       {loading && <LoadingScreen />}
