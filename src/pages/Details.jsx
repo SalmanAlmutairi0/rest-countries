@@ -29,7 +29,7 @@ export default function Details() {
       } catch (error) {
         console.error("Error fetching country data:", error);
       }
-      
+
       setLoading(false);
     };
 
@@ -67,7 +67,7 @@ export default function Details() {
               <p className="font-semibold">
                 Population:{" "}
                 <span className="font-normal text-gray-700">
-                  {country?.population}
+                  {country?.population?.toLocaleString()}
                 </span>
               </p>
               <p className="font-semibold">

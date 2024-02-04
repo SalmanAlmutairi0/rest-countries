@@ -13,7 +13,7 @@ export default function CountryCard({ country }) {
           <p className="font-semibold">
             Population:{" "}
             <span className="font-normal text-gray-700">
-              {country.population}
+              {country.population.toLocaleString()}
             </span>
           </p>
           <p className="font-semibold">
