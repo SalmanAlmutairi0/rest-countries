@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import arrowIcon from "../../assets/icons/arrow.png";
 
-export default function Search() {
+export default function Search({ selectedFilter, setSelectedFilter }) {
   const [filterOpen, setFilterOpen] = useState(false);
-  const [selectedFilter, setSelectedFilter] = useState("Filter by Region");
 
   const handleSelectedFilter = (region) => {
     setSelectedFilter(region);
@@ -20,7 +19,7 @@ export default function Search() {
           <input
             type="text"
             placeholder="Search for a country..."
-            className="outline-none"
+            className="outline-none w-full"
           />
         </form>
 
