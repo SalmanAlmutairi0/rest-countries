@@ -50,7 +50,7 @@ export default function Search({ selectedFilter, setSelectedFilter }) {
     <div className="py-8">
       <div className="container flex flex-col  w-[95%] mx-auto  justify-center  gap-16 lg:flex-row lg:justify-between lg:items-center">
         {/* search */}
-        <div className="flex flex-col relative md:w-1/2 lg:w-1/3 xl:w-1/4 ">
+        <div className="flex flex-col relative md:w-1/2 lg:w-1/2 xl:w-1/3 ">
           <form
             className="bg-white shadow-md rounded-lg flex items-center gap-4 px-4 py-4  w-full"
             onChange={(e) => handleSearch(e)}

@@ -7,7 +7,7 @@ export default function Filter({ filterOpen, setFilterOpen, selectedFilter, setS
        setFilterOpen(false);
      };
   return (
-    <div className="relative w-1/2 lg:w-1/3 xl:w-1/4">
+    <div className="relative w-1/2 lg:w-1/6 ">
       <div
         className="flex justify-between items-center cursor-pointer bg-white shadow-md rounded-lg px-4 py-4"
         onClick={() => setFilterOpen(!filterOpen)}
@@ -24,31 +24,31 @@ export default function Filter({ filterOpen, setFilterOpen, selectedFilter, setS
         <div className="absolute w-full bg-white shadow-md rounded-lg px-4 py-4 mt-2">
           <div className="flex flex-col">
             <p
-              className="cursor-pointer text-base font-semibold p-2 rounded hover:bg-gray-300"
+              className="cursor-pointer text-base font-semibold p-2 rounded hover:bg-gray-100"
               onClick={() => handleSelectedFilter("Africa")}
             >
               Africa
             </p>
             <p
-              className="cursor-pointer text-base font-semibold p-2 rounded hover:bg-gray-300"
+              className="cursor-pointer text-base font-semibold p-2 rounded hover:bg-gray-100"
               onClick={() => handleSelectedFilter("America")}
             >
               America
             </p>
             <p
-              className="cursor-pointer text-base font-semibold p-2 rounded hover:bg-gray-300"
+              className="cursor-pointer text-base font-semibold p-2 rounded hover:bg-gray-100"
               onClick={() => handleSelectedFilter("Asia")}
             >
               Asia
             </p>
             <p
-              className="cursor-pointer text-base font-semibold p-2 rounded hover:bg-gray-300"
+              className="cursor-pointer text-base font-semibold p-2 rounded hover:bg-gray-100"
               onClick={() => handleSelectedFilter("Europe")}
             >
               Europe
             </p>
             <p
-              className="cursor-pointer text-base font-semibold p-2 rounded hover:bg-gray-300"
+              className="cursor-pointer text-base font-semibold p-2 rounded hover:bg-gray-100"
               onClick={() => handleSelectedFilter("Oceania")}
             >
               Oceania
