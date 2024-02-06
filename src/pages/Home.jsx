@@ -6,12 +6,14 @@ import CountryList from "../components/CountryList";
 export default function Home() {
   const [selectedFilter, setSelectedFilter] = useState("Filter by Region");
 
-
   return (
     <>
-      <div className="bg-gray-100 h-screen w-full ">
-        <Search  selectedFilter={selectedFilter} setSelectedFilter={setSelectedFilter} />
-        <CountryList selectedFilter={selectedFilter}  />
+      <div className="h-screen w-full bg-gray-100 ">
+        <Search
+          selectedFilter={selectedFilter}
+          setSelectedFilter={setSelectedFilter}
+        />
+        <CountryList selectedFilter={selectedFilter} />
       </div>
     </>
   );

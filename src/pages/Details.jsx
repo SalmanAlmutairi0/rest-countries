@@ -15,17 +15,15 @@ export default function Details() {
       try {
         setLoading(true);
         const res = await fetch(
-          `https://restcountries.com/v3.1/alpha/${countryCcn3}`
+          `https://restcountries.com/v3.1/alpha/${countryCcn3}`,
         );
 
         const data = await res.json();
-        
+
         setCurrencies(
-          data[0].currencies[Object.keys(data[0].currencies)[0]].name
+          data[0].currencies[Object.keys(data[0].currencies)[0]].name,
         );
         setCountry(data[0]);
-
-        
       } catch (error) {
         console.error("Error fetching country data:", error);
       }
@@ -36,19 +34,19 @@ export default function Details() {
     getCountry();
   }, [countryCcn3]);
   return (
-    <div className="container flex flex-col gap-10 lg:mx-auto my-10  ">
+    <div className="container my-10 flex flex-col gap-10 lg:mx-auto  ">
       {loading && <LoadingScreen />}
       <Link to="/">
-        <button className="flex ml-3 items-center gap-3 bg-white py-1 px-6 shadow-md w-fit">
+        <button className="ml-3 flex w-fit items-center gap-3 bg-white px-6 py-1 shadow-md">
           <img src={leftArrowIcon} alt="back" className="size-4" />
           <span>Back</span>
         </button>
       </Link>
-      <div className="flex flex-col md:flex-row md:items-center  gap-10 lg:justify-around mx-3 ">
+      <div className="mx-3 flex flex-col gap-10  md:flex-row md:items-center lg:justify-around ">
         <img
           src={country?.flags?.svg}
           alt={country?.name?.common}
-          className="w-full md:w-1/2 md:h-1/2 lg:w-1/3 lg:h-full xl:w-2/5 xl:h-full"
+          className="w-full md:h-1/2 md:w-1/2 lg:h-full lg:w-1/3 xl:h-full xl:w-2/5"
         />
 
         <div className="flex flex-col  gap-10  ">
@@ -116,11 +114,11 @@ export default function Details() {
               </p>
             </div>
           </div>
-          <div className="flex flex-col lg:flex-row lg:items-center gap-2">
+          <div className="flex flex-col gap-2 lg:flex-row lg:items-center">
             <p className="font-semibold">Border Countries:</p>
-            <div className="flex items-center justify-center flex-wrap gap-3">
+            <div className="flex flex-wrap items-center justify-center gap-3">
               {country.borders?.map((border) => (
-                <p className="bg-white py-1 px-4 rounded shadow min-w-24 text-center text-sm">
+                <p className="min-w-24 rounded bg-white px-4 py-1 text-center text-sm shadow">
                   {border}
                 </p>
               ))}

@@ -15,7 +15,7 @@ export default function CountryList({ selectedFilter }) {
           res = await fetch("https://restcountries.com/v3.1/all");
         } else {
           res = await fetch(
-            `https://restcountries.com/v3.1/region/${selectedFilter}`
+            `https://restcountries.com/v3.1/region/${selectedFilter}`,
           );
         }
         const data = await res.json();
@@ -30,7 +30,7 @@ export default function CountryList({ selectedFilter }) {
   }, [selectedFilter]);
 
   return (
-    <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+    <div className="container mx-auto grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {loading && <LoadingScreen />}
       {country.map((country, index) => (
         <CountryCard key={index} country={country} />

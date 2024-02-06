@@ -2,9 +2,9 @@ import React from "react";
 
 export default function Navbar() {
   return (
-    <nav className=" drop-shadow-sm bg-white ">
-      <div className="flex justify-between w-full items-center container mx-auto p-4">
-        <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold">
+    <nav className=" bg-white drop-shadow-sm ">
+      <div className="container mx-auto flex w-full items-center justify-between p-4">
+        <h1 className="text-xl font-bold sm:text-2xl lg:text-3xl">
           Where in the world?
         </h1>
 
