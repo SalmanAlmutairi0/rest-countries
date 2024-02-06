@@ -7,6 +7,7 @@ export default function Search({ selectedFilter, setSelectedFilter }) {
   const [searchText, setSearchText] = useState("");
   const [searchResult, setSearchResult] = useState([]);
   const [closeSearch, setCloseSearch] = useState(false);
+  const [error, setError] = useState(false);
   const handleSelectedFilter = (region) => {
     setSelectedFilter(region);
     setFilterOpen(false);
@@ -31,9 +32,11 @@ export default function Search({ selectedFilter, setSelectedFilter }) {
           // Check if data is an array
           setSearchResult(data);
           setCloseSearch(true);
+          setError(false);
         } else {
           setSearchResult([]);
-          setCloseSearch(false);
+          // setCloseSearch(false);
+          setError(true);
         }
       } catch (error) {
         console.error("Error fetching country data:", error);
@@ -63,34 +66,36 @@ export default function Search({ selectedFilter, setSelectedFilter }) {
 
           {/* result */}
           {closeSearch && (
-            
             <div className="absolute top-16 z-20 w-full bg-white shadow-md rounded-lg px-4 py-4 mt-2">
-            <div className="flex flex-col gap-5">
-              {/* each row */}
-              {searchResult.map((country, index) => (
-                index < 5 &&
-                  <Link to={`/details/${country.ccn3}`} >
-                <div key={index} className="flex border p-1 cursor-pointer gap-4 hover:bg-slate-100">
-                  <img
-                    src={country?.flags?.svg || img}
-                    className="w-24"
-                    alt={country?.name?.common}
-                    />
-                  <p className="text-base font-semibold">
-                    {country?.name?.common}
-                  </p>
-                </div>
-                  </Link>
-              ))}
+              <div className="flex flex-col gap-5">
+                {/* each row */}
+                {searchResult.map(
+                  (country, index) =>
+                    index < 5 && (
+                      <Link to={`/details/${country.ccn3}`}>
+                        <div
+                          key={index}
+                          className="flex border p-1 cursor-pointer gap-4 hover:bg-slate-100"
+                        >
+                          <img
+                            src={country?.flags?.svg || img}
+                            className="w-24"
+                            alt={country?.name?.common}
+                          />
+                          <p className="text-base font-semibold">
+                            {country?.name?.common}
+                          </p>
+                        </div>
+                      </Link>
+                    )
+                )}
 
-              {searchResult.length === 0 && (
-                <p className="text-base font-semibold">No results found</p>
-              )}
-
-             
+                {error && (
+                  <p className="font-semibold">Country not found (404)</p>
+                )}
+              </div>
             </div>
-          </div>
-        )}
+          )}
         </div>
 
         <div className="relative w-1/2 lg:w-1/3 xl:w-1/4">
