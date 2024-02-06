@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Details from "./pages/Details";
+import NotFound from "./pages/NotFound";
 
 export default function App() {
   return (
@@ -10,8 +11,9 @@ export default function App() {
       <Navbar />
 
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route exact path="/" element={<Home />} />
         <Route path="/details/:name" element={<Details />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );
