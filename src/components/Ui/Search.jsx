@@ -16,6 +16,7 @@ export default function Search({ selectedFilter, setSelectedFilter }) {
   const handleSearch = (e) => {
     if (e.target.value === "") {
       setSearchResult([]);
+      setCloseSearch(false);
       return;
     }
     setSearchText(() => e.target.value);
